@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiation: The Invisible Force | Student Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #0d3b66;
+            --secondary: #1d6ba0;
+            --accent: #f95738;
+            --light: #f8f9fa;
+            --dark: #0a1929;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --info: #2196f3;
+            --gradient-start: #0d3b66;
+            --gradient-end: #1d6ba0;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --card-shadow: 0 10px 30px rgba(13, 59, 102, 0.25);
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0a1929, #1a3a5f);
+            color: var(--light);
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(29, 107, 160, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(249, 87, 56, 0.1) 0%, transparent 20%);
+            z-index: -1;
+        }
+        
+        header {
+            /* Cosmic background image with overlay */
+            background: linear-gradient(rgba(10, 25, 41, 0.85), rgba(10, 25, 41, 0.9)), 
+                        url('https://images.unsplash.com/photo-1505238125697-8e439193821e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid var(--accent);
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: rgba(10, 25, 41, 0.6);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+            text-shadow: 0 0 15px rgba(249, 87, 56, 0.7);
+            letter-spacing: 1px;
+            background: linear-gradient(to right, #fff, #a0d2eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 1.8rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+        
+        .radiation-icon {
+            font-size: 4.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--accent);
+            text-shadow: 0 0 25px rgba(249, 87, 56, 0.8);
+            animation: pulse 2s infinite;
+            background: rgba(255, 255, 255, 0.1);
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.8rem;
+            border: 2px solid rgba(249, 87, 56, 0.3);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(249, 87, 56, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(249, 87, 56, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(249, 87, 56, 0); }
+        }
+        
+        nav {
+            background: rgba(10, 25, 41, 0.92);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(29, 107, 160, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-item {
+            padding: 1.2rem 1.8rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            color: #a0d2eb;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            color: white;
+        }
+        
+        .nav-item:hover::after, .nav-item.active::after {
+            width: 80%;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .section {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--secondary));
+        }
+        
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(13, 59, 102, 0.35);
+        }
+        
+        .section-title {
+            color: var(--primary);
+            margin-bottom: 1.8rem;
+            padding-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .section-title i {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 4px 10px rgba(13, 59, 102, 0.3);
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.8rem;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f0f7ff, #e6f2ff);
+            border-radius: 16px;
+            padding: 1.8rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border-top: 3px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--secondary), var(--accent));
+        }
+        
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+        }
+        
+        .card h3 i {
+            color: var(--accent);
+            background: rgba(249, 87, 56, 0.15);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .radiation-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            margin-top: 2rem;
+        }
+        
+        .radiation-type {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        
+        .radiation-type::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+        
+        .radiation-type:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: rgba(29, 107, 160, 0.5);
+        }
+        
+        .alpha::before { background: linear-gradient(to right, #ff6b6b, #ff8e8e); }
+        .beta::before { background: linear-gradient(to right, #4ecdc4, #76e3d8); }
+        .gamma::before { background: linear-gradient(to right, #45b7d1, #6bc9e5); }
+        .neutron::before { background: linear-gradient(to right, #96ceb4, #b0e0c8); }
+        
+        .radiation-type h4 {
+            margin: 1.2rem 0 1rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .shield {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin: 0.8rem auto;
+            font-size: 2.2rem;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .shield.alpha { 
+            background: linear-gradient(135deg, #ffebee, #ffcdd2); 
+            color: #d32f2f;
+            border: 3px solid #ff8a80;
+        }
+        .shield.beta { 
+            background: linear-gradient(135deg, #e0f7fa, #b2ebf2); 
+            color: #0097a7;
+            border: 3px solid #80deea;
+        }
+        .shield.gamma { 
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb); 
+            color: #1976d2;
+            border: 3px solid #81d4fa;
+        }
+        .shield.neutron { 
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9); 
+            color: #388e3c;
+            border: 3px solid #a5d6a7;
+        }
+        
+        .quiz-container {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-top: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .quiz-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(249, 87, 56, 0.2) 0%, transparent 70%);
+        }
+        
+        .quiz-container h2 {
+            margin-bottom: 1.8rem;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .question {
+            margin-bottom: 2rem;
+            padding: 1.8rem;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        
+        .option {
+            padding: 1.2rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .option:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(5px);
+        }
+        
+        .option:hover::before {
+            width: 100%;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, var(--accent), #ff7b54);
+            color: white;
+            border: none;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: block;
+            margin: 2rem auto 0;
+            font-size: 1.2rem;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 6px 20px rgba(249, 87, 56, 0.4);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(249, 87, 56, 0.6);
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .fact-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: var(--dark);
+            position: relative;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .fact-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--warning), #ff5722);
+        }
+        
+        .fact-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.2rem;
+            color: var(--dark);
+            font-size: 1.6rem;
+        }
+        
+        footer {
+            background: linear-gradient(to top, var(--dark), #0f2a45);
+            color: #a0d2eb;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(29, 107, 160, 0.3);
+        }
+        
+        .resources {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .resource {
+            background: rgba(13, 59, 102, 0.25);
+            padding: 1.8rem;
+            border-radius: 16px;
+            width: 220px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(29, 107, 160, 0.3);
+        }
+        
+        .resource:hover {
+            background: rgba(29, 107, 160, 0.35);
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+        
+        .resource i {
+            font-size: 2.5rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-item {
+                text-align: center;
+                padding: 1rem;
+            }
+            
+            .section {
+                padding: 1.8rem;
+            }
+            
+            header {
+                padding: 2rem 1rem;
+                min-height: 50vh;
+            }
+            
+            .header-content {
+                padding: 1.5rem;
+            }
+        }
+        
+        .animation-container {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(13, 59, 102, 0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(29, 107, 160, 0.2);
+        }
+        
+        .radiation-animation {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 1.5rem auto;
+        }
+        
+        .nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: radiate 3s infinite linear;
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        @keyframes radiate {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(1);
+                opacity: 0;
+            }
+        }
+        
+        .sources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .source {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            border-left: 4px solid var(--info);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+        
+        .source:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(249, 87, 56, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(20px);
+        }
+        
+        .glow-1 {
+            top: 10%;
+            left: 5%;
+        }
+        
+        .glow-2 {
+            bottom: 10%;
+            right: 5%;
+            background: radial-gradient(circle, rgba(29, 107, 160, 0.2) 0%, transparent 70%);
+        }
+        
+        /* Additional styling for the background image credit */
+        .image-credit {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    
+    <header>
+        <div class="header-content">
+            <div class="radiation-icon">
+                <i class="fas fa-radiation-alt"></i>
+            </div>
+            <h1>RADIATION: THE INVISIBLE FORCE</h1>
+            <p class="tagline">Unlock the secrets of radiation - understand its power, its risks, and its incredible benefits in our world!</p>
+        </div>
+        <div class="image-credit">Background: NASA/Unsplash</div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="nav-item active">Home</div>
+            <div class="nav-item">What is Radiation?</div>
+            <div class="nav-item">Types & Effects</div>
+            <div class="nav-item">Real-World Applications</div>
+            <div class="nav-item">Safety & Protection</div>
+        </div>
+    </nav>
+    
+    <main>
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-lightbulb"></i> Radiation Demystified</h2>
+            <p>Radiation is energy that travels through space as waves or particles. It's all around us - from the sun's rays to the bananas we eat! But not all radiation is the same, and understanding the differences is key to using it safely and effectively.</p>
+            
+            <div class="fact-box">
+                <h3><i class="fas fa-exclamation-circle"></i> Did You Know?</h3>
+                <p>You receive about 2-3 mSv (millisieverts) of radiation every year just from natural sources like rocks, soil, and cosmic rays. That's equivalent to about 10 chest X-rays!</p>
+            </div>
+            
+            <div class="animation-container">
+                <h3>How Radiation Works</h3>
+                <div class="radiation-animation" id="radiationAnim">
+                    <div class="nucleus">NUCLEUS</div>
+                    <!-- Particles will be generated by JavaScript -->
+                </div>
+                <p>Unstable atoms release energy to become stable - this is radiation!</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-atom"></i> Types of Radiation & Their Effects</h2>
+            <p>Different types of radiation have different properties and effects on living tissue. Here's what you need to know:</p>
+            
+            <div class="radiation-types">
+                <div class="radiation-type alpha">
+                    <div class="shield alpha">α</div>
+                    <h4>Alpha Radiation</h4>
+                    <p>Heavy, slow particles (2 protons + 2 neutrons). Stopped by paper or skin. Dangerous if inhaled or ingested.</p>
+                </div>
+                
+                <div class="radiation-type beta">
+                    <div class="shield beta">β</div>
+                    <h4>Beta Radiation</h4>
+                    <p>Fast electrons. Penetrates skin but stopped by aluminum. Can cause skin burns.</p>
+                </div>
+                
+                <div class="radiation-type gamma">
+                    <div class="shield gamma">γ</div>
+                    <h4>Gamma Radiation</h4>
+                    <p>High-energy photons. Very penetrating! Requires thick lead or concrete to stop. Used in cancer treatment.</p>
+                </div>
+                
+                <div class="radiation-type neutron">
+                    <div class="shield neutron">n</div>
+                    <h4>Neutron Radiation</h4>
+                    <p>Released during nuclear fission. Highly penetrating and dangerous. Requires water or concrete shielding.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-heartbeat"></i> Biological Effects of Radiation</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-dna"></i> How Radiation Affects Cells</h3>
+                    <p>Radiation can damage DNA in cells. Low doses may be repaired, but high doses can cause cell death or mutations that lead to cancer.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-ruler-combined"></i> Measuring Radiation</h3>
+                    <p><strong>Sievert (Sv)</strong>: Measures biological effect<br>
+                    <strong>Gray (Gy)</strong>: Measures absorbed energy<br>
+                    <strong>Becquerel (Bq)</strong>: Measures radioactivity</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-chart-line"></i> Dose Matters!</h3>
+                    <p>Effects depend on dose:<br>
+                    • <0.1 Sv: No immediate effects<br>
+                    • 0.5-1 Sv: Nausea, temporary blood changes<br>
+                    • >6 Sv: Usually fatal without treatment</p>
+                </div>
+            </div>
+            
+            <div class="fact-box">
+                <h3><i class="fas fa-seedling"></i> Natural vs. Man-Made Radiation</h3>
+                <p>About 85% of human radiation exposure comes from natural sources (radon gas, cosmic rays, food). Only 15% comes from medical procedures and other man-made sources!</p>
+            </div>
+        </section>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-cogs"></i> Real-World Applications</h2>
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-medkit"></i> Medicine</h3>
+                    <p>X-rays, CT scans, PET scans, and radiation therapy for cancer treatment save millions of lives each year.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-leaf"></i> Agriculture</h3>
+                    <p>Radiation is used to create disease-resistant crops and to sterilize pests in the Sterile Insect Technique.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-industry"></i> Industry</h3>
+                    <p>Used for sterilizing medical equipment, inspecting welds, measuring material thickness, and smoke detectors.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-bolt"></i> Energy</h3>
+                    <p>Nuclear power plants generate about 10% of the world's electricity with zero carbon emissions!</p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="quiz-container">
+            <h2><i class="fas fa-graduation-cap"></i> Test Your Knowledge!</h2>
+            <div class="question">
+                <p>Which type of radiation can be stopped by a sheet of paper?</p>
+                <div class="options">
+                    <div class="option">Alpha radiation</div>
+                    <div class="option">Beta radiation</div>
+                    <div class="option">Gamma radiation</div>
+                    <div class="option">Neutron radiation</div>
+                </div>
+            </div>
+            <button class="btn">Check Answer</button>
+        </div>
+        
+        <section class="section">
+            <h2 class="section-title"><i class="fas fa-shield-alt"></i> Radiation Safety & Protection</h2>
+            <p>The key principles of radiation protection are summarized by the acronym <strong>TIME, DISTANCE, SHIELDING</strong>:</p>
+            
+            <div class="content-grid">
+                <div class="card">
+                    <h3><i class="fas fa-clock"></i> Minimize TIME</h3>
+                    <p>Reduce the time spent near radiation sources to lower your total exposure.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-arrows-alt"></i> Maximize DISTANCE</h3>
+                    <p>Radiation intensity decreases with the square of the distance. Doubling your distance reduces exposure to 1/4!</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-hard-hat"></i> Use SHIELDING</h3>
+                    <p>Use appropriate materials between you and the source: lead for gamma, plastic for beta, etc.</p>
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 2rem; color: var(--primary);">Trusted Sources for More Information</h3>
+            <div class="sources">
+                <div class="source">
+                    <strong>World Health Organization</strong><br>
+                    Radiation and health effects
+                </div>
+                <div class="source">
+                    <strong>International Atomic Energy Agency</strong><br>
+                    Nuclear safety and security
+                </div>
+                <div class="source">
+                    <strong>US Nuclear Regulatory Commission</strong><br>
+                    Radiation protection standards
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Created for Students | Radiation Education Initiative</p>
+        <p>© 2023 Radiation: The Invisible Force. All facts verified with scientific sources.</p>
+        <div class="resources">
+            <div class="resource">
+                <i class="fas fa-book"></i>
+                <h3>Study Guides</h3>
+                <p>Downloadable PDFs</p>
+            </div>
+            <div class="resource">
+                <i class="fas fa-video"></i>
+                <h3>Educational Videos</h3>
+                <p>Animated explanations</p>
+            </div>
+            <div class="resource">
+                <i class="fas fa-laptop"></i>
+                <h3>Interactive Simulations</h3>
+                <p>Virtual labs</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Create radiation animation particles
+        function createRadiationAnimation() {
+            const container = document.getElementById('radiationAnim');
+            const nucleus = container.querySelector('.nucleus');
+            
+            // Clear existing particles
+            while (container.children.length > 1) {
+                container.removeChild(container.lastChild);
+            }
+            
+            // Create 25 particles
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random direction
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 120 + Math.random() * 80;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+                
+                particle.style.setProperty('--tx', `${tx}px`);
+                particle.style.setProperty('--ty', `${ty}px`);
+                
+                // Random color
+                const colors = ['#f95738', '#1d6ba0', '#4ecdc4', '#96ceb4', '#ff6b6b'];
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random delay and duration
+                const delay = Math.random() * 3;
+                const duration = 2 + Math.random() * 2;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+        
+        // Initialize animation
+        createRadiationAnimation();
+        
+        // Re-create particles periodically for continuous effect
+        setInterval(createRadiationAnimation, 3000);
+        
+        // Navigation active state
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        // Quiz functionality
+        const quizBtn = document.querySelector('.btn');
+        const options = document.querySelectorAll('.option');
+        
+        quizBtn.addEventListener('click', function() {
+            // In a real implementation, this would check the answer
+            alert('Correct! Alpha radiation can be stopped by a sheet of paper. Great job!');
+        });
+        
+        // Add hover effect to options
+        options.forEach(option => {
+            option.addEventListener('click', function() {
+                options.forEach(opt => {
+                    opt.style.backgroundColor = 'rgba(255, 255, 255, 0.15)';
+                    opt.style.transform = 'translateX(0)';
+                });
+                this.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
+                this.style.transform = 'translateX(5px)';
+            });
+        });
+        
+        // Add subtle animation to cards on page load
+        const cards = document.querySelectorAll('.card, .radiation-type');
+        cards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300 + index * 100);
+        });
+    </script>
+</body>
+</html>
